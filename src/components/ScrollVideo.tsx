@@ -17,6 +17,31 @@ export const ScrollVideo: React.FC<{ cars: Car[] }> = ({ cars }) => {
 
   const time = progress * duration;
 
+  // Video önce tamamen indirilir: mobil tarayıcılar yalnızca başını yükler ve
+  // kaydırınca inmemiş bir saniyeye atlandığında ekran kararır. Yüklenene kadar kapak görseli görünür.
+  const [src, setSrc] = useState<string>();
+  useEffect(() => {
+    const controller = new AbortController();
+    let objectUrl: string | undefined;
+    fetch(video.src, { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Video ${res.status}`);
+        return res.blob();
+      })
+      .then((blob) => {
+        objectUrl = URL.createObjectURL(blob);
+        setSrc(objectUrl);
+      })
+      .catch(() => {
+        // İndirilemezse doğrudan adresten oynat (eski davranış)
+        if (!controller.signal.aborted) setSrc(video.src);
+      });
+    return () => {
+      controller.abort();
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, []);
+
   // Kaydırma ilerlemesini videonun zamanına bağla
   useEffect(() => {
     const el = videoRef.current;
@@ -39,7 +64,7 @@ export const ScrollVideo: React.FC<{ cars: Car[] }> = ({ cars }) => {
       <div className="sticky top-0 h-screen overflow-hidden">
         <video
           ref={videoRef}
-          src={video.src}
+          src={src}
           poster={video.poster}
           muted
           playsInline
