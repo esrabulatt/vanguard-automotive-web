@@ -403,6 +403,9 @@ const AppointmentPanel: React.FC<PanelProps> = ({ car, cars, initialType, onClos
                 HEMEN ARAYIN · {PHONE.display}
               </a>
             </p>
+            <p className="mt-1 text-center text-[11px] text-[#f1ece2]/30">
+              Demo proje: talepler gerçek bir satış ekibine iletilmez.
+            </p>
           </motion.form>
         )}
       </AnimatePresence>

@@ -109,6 +109,10 @@ export const MinimalFooter: React.FC = () => {
             <span>© 2026 VANGUARD AUTOMOTIVE · LÜKS BUTİK GALERİ</span>
           </div>
         </div>
+        <p className="mt-6 text-xs leading-relaxed text-white/35">
+          Bu site bir portfolyo / demo projesidir. Vanguard Automotive gerçek bir işletme değildir; araçlar, fiyatlar,
+          adres ve iletişim bilgileri örnek amaçlıdır. Formlardan gönderilen talepler gerçek bir satış ekibine iletilmez.
+        </p>
       </div>
     </footer>
   );
