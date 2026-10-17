@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --color-accent: #e8532f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f4f2ee;
+}
+
+/* Ortadaki araç kartı, araç değişince yumuşakça belirir */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-card-in {
+  animation: card-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-card-in { animation: none; }
+}
+
+/* Detay sayfası: bölümler ekrana girerken yumuşakça belirir */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Görseller ekrana girerken aşağıdan perde gibi açılır */
+.reveal-clip .clip-inner {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-clip .clip-inner img {
+  transform: scale(1.15);
+  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-clip.is-visible .clip-inner {
+  clip-path: inset(0 0 0 0);
+}
+
+.reveal-clip.is-visible .clip-inner img {
+  transform: scale(1);
+}
+
+.reveal-clip.is-visible:hover .clip-inner img {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-clip .clip-inner, .reveal-clip .clip-inner img { clip-path: none; transform: none; transition: none; }
+}
