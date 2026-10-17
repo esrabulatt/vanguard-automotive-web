@@ -46,7 +46,8 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
   useEffect(() => {
     if (!car) return;
     preloadImages(photos);
-    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && closeDetail();
+    // Üstte randevu penceresi açıksa Esc önce onu kapatır
+    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && !useCarStore.getState().reserveOpen && closeDetail();
     window.addEventListener('keydown', onKeyDown);
     document.body.style.overflow = 'hidden';
     return () => {
@@ -73,10 +74,8 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
     });
   };
 
-  const reserve = () => {
-    closeDetail();
-    openReserve(car.id);
-  };
+  // Randevu penceresi detayın üzerinde açılır; kapatınca detaya dönülür
+  const reserve = () => openReserve(car.id);
 
   const specs = [
     ['YIL', String(car.year)],

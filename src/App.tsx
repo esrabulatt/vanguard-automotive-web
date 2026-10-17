@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { ContactPage } from './pages/ContactPage'
 import { useRevealOnScroll } from './hooks/useRevealOnScroll'
+import { useOverlayHistory } from './hooks/useOverlayHistory'
 import { Navbar } from './components/Navbar'
 import { AppointmentModal } from './components/AppointmentModal'
 import { FleetPage } from './components/FleetPage'
@@ -16,16 +17,15 @@ function App() {
   const [cars, setCars] = useState<Car[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const { detailCarId, closeFleet, closeDetail } = useCarStore()
+  const { detailCarId } = useCarStore()
   const { pathname } = useLocation()
+  useOverlayHistory()
   useRevealOnScroll(`${cars.length}-${pathname}`)
 
-  // Sayfa değişince en üste dön, açık katalog/detay katmanlarını kapat
+  // Sayfa değişince (ve yenilemede) animasyonsuz en üste dön
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
-    closeFleet()
-    closeDetail()
-  }, [pathname, closeFleet, closeDetail])
+  }, [pathname])
 
   useEffect(() => {
     getCars()

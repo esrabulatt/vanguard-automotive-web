@@ -37,14 +37,13 @@ const ease = [0.2, 0.8, 0.2, 1] as const;
 // Üst çubuk: ana videonun üzerinde şeffaf ve beyaz yazılı; aşağıda açık zeminli düz bir şerit.
 // Aşağı kaydırırken gizlenir, yukarı kaydırınca görünür. Menü tam ekran açılır.
 export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
-  const { openFleet, closeFleet, fleetOpen, openReserve, openDetail } = useCarStore();
+  const { openFleet, fleetOpen, openReserve, openDetail, menuOpen, openMenu, closeMenu } = useCarStore();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   // Koyu bir üst alanla başlayan sayfalarda navbar şeffaf/beyaz başlar
   const darkTop = pathname === '/' || pathname === '/iletisim';
   const [hidden, setHidden] = useState(false);
   const [overHero, setOverHero] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [preview, setPreview] = useState(0);
@@ -71,17 +70,16 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false);
+    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && closeMenu();
     window.addEventListener('keydown', onKeyDown);
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKeyDown);
       if (!fleetOpen) document.body.style.overflow = '';
     };
-  }, [menuOpen, fleetOpen]);
+  }, [menuOpen, fleetOpen, closeMenu]);
 
   const go = (category: Category | 'All', search = '') => {
-    setMenuOpen(false);
     setSearchOpen(false);
     setQuery('');
     openFleet(category, search);
@@ -89,9 +87,8 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
 
   const select = (item: MenuItem) => {
     if (item.category) return go(item.category);
-    setMenuOpen(false);
-    closeFleet();
-    if (item.to) navigate(item.to);
+    // Menünün geçmiş adımı yeni sayfayla değiştirilir; geri tuşu menüyü tekrar açmaz
+    if (item.to) navigate(item.to, { replace: true });
   };
 
   const results = query.trim() ? cars.filter((car) => matchesSearch(car, query)) : [];
@@ -124,11 +121,8 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
           {/* Sol: logo */}
           <Link
             to="/"
-            onClick={() => {
-              setMenuOpen(false);
-              closeFleet();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            replace={menuOpen}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Vanguard Automotive ana sayfa"
             className={`justify-self-start ${searchOpen ? 'hidden sm:block' : ''}`}
           >
@@ -185,7 +179,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
             </button>
             <button
               type="button"
-              onClick={() => setMenuOpen(true)}
+              onClick={openMenu}
               aria-expanded={menuOpen}
               aria-label="Menüyü aç"
               className="group w-11 h-11 flex flex-col items-end justify-center gap-[7px]"
@@ -269,7 +263,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
               <Logo />
               <button
                 type="button"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="flex items-center gap-3 py-3 font-mono text-[11px] tracking-[0.3em] text-white/70 hover:text-white"
               >
                 KAPAT <X className="w-5 h-5" strokeWidth={1.25} />
@@ -341,10 +335,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
               </a>
               <button
                 type="button"
-                onClick={() => {
-                  setMenuOpen(false);
-                  openReserve();
-                }}
+                onClick={() => openReserve()}
                 className="flex items-center gap-2.5 py-3 text-[#e2cc9b] hover:text-white"
               >
                 <span aria-hidden="true" className="w-1.5 h-1.5 bg-[#c9a96e]" /> SHOWROOM RANDEVUSU AL
