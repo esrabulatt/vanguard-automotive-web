@@ -21,7 +21,7 @@ const EdgeWords: React.FC<{ side: 'left' | 'right'; words: string[] }> = ({ side
     {words.map((word, i) => (
       <span
         key={word}
-        className={`leading-[0.85] tracking-tight ${i === 0 ? 'font-bold text-[clamp(2.2rem,5vw,5.5rem)]' : 'font-medium text-[clamp(1.3rem,3vw,3.4rem)] opacity-60'}`}
+        className={`leading-[0.85] tracking-tight ${i === 0 ? 'font-bold text-[clamp(1.6rem,5vw,5.5rem)]' : 'hidden sm:block font-medium text-[clamp(1.3rem,3vw,3.4rem)] opacity-60'}`}
         style={{ writingMode: 'vertical-rl', transform: side === 'left' ? 'rotate(180deg)' : undefined }}
       >
         {word}
@@ -91,7 +91,7 @@ export const CatalogHero: React.FC<{ cars: Car[]; category: Category | 'All'; on
       {showRight && <EdgeWords side="right" words={['LÜKS', 'PREMIUM']} />}
 
       {/* Manşet */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-16 sm:px-40 text-center text-white">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-14 sm:px-40 text-center text-white">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

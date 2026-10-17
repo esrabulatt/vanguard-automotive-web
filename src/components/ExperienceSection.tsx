@@ -134,7 +134,7 @@ export const ExperienceSection: React.FC = () => {
           <button
             type="button"
             onClick={() => openFleet('All')}
-            className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.25em] text-white/80 hover:text-white"
+            className="mt-3 inline-flex items-center gap-2 py-2 font-mono text-[11px] tracking-[0.25em] text-white/80 hover:text-white"
           >
             ARAZİ MI, LÜKS MÜ? <ArrowRight className="w-4 h-4" />
           </button>

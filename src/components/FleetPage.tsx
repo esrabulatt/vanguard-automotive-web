@@ -129,7 +129,7 @@ export const FleetPage: React.FC<Props> = ({ cars, loading, error }) => {
             <button
               type="button"
               onClick={closeFleet}
-              className="font-mono text-xs tracking-[0.3em] text-gray-500 hover:text-gray-900"
+              className="py-3 font-mono text-xs tracking-[0.3em] text-gray-500 hover:text-gray-900"
             >
               ← ANA SAYFAYA DÖN
             </button>

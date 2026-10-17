@@ -115,7 +115,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
         <button
           type="button"
           onClick={closeDetail}
-          className="flex items-center gap-2 font-mono text-xs tracking-wider hover:text-[#c9a96e] transition-colors"
+          className="flex items-center gap-2 py-3 font-mono text-xs tracking-wider hover:text-[#c9a96e] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> GERİ
         </button>
@@ -240,7 +240,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
                   <a
                     href={car.reportUrl}
                     download
-                    className="inline-flex items-center gap-2 text-sm text-[#f1ece2]/70 underline underline-offset-4 decoration-[#c9a96e]/50 hover:text-[#f1ece2]"
+                    className="inline-flex items-center gap-2 py-2 text-sm text-[#f1ece2]/70 underline underline-offset-4 decoration-[#c9a96e]/50 hover:text-[#f1ece2]"
                   >
                     <FileDown className="w-4 h-4" strokeWidth={1.5} /> Ekspertiz Raporu (PDF)
                   </a>
@@ -249,7 +249,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
                     href={whatsappLink(`Merhaba, ${carTitle(car)} için ekspertiz raporunu talep ediyorum.`)}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-[#f1ece2]/70 underline underline-offset-4 decoration-[#c9a96e]/50 hover:text-[#f1ece2]"
+                    className="inline-flex items-center gap-2 py-2 text-sm text-[#f1ece2]/70 underline underline-offset-4 decoration-[#c9a96e]/50 hover:text-[#f1ece2]"
                   >
                     <FileDown className="w-4 h-4" strokeWidth={1.5} /> Ekspertiz Raporu (PDF) talep et
                   </a>
@@ -278,7 +278,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
             </div>
             <p className="text-sm text-[#f1ece2]/55">
               Hemen bilgi almak için{' '}
-              <a href={PHONE.href} className="whitespace-nowrap text-[#f1ece2] underline underline-offset-4 decoration-[#c9a96e]/60 hover:text-[#e2cc9b]">
+              <a href={PHONE.href} className="inline-block py-1.5 whitespace-nowrap text-[#f1ece2] underline underline-offset-4 decoration-[#c9a96e]/60 hover:text-[#e2cc9b]">
                 {PHONE.display}
               </a>{' '}
               numaralı hattımızdan bizi arayabilirsiniz.
@@ -288,7 +288,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
           <button
             type="button"
             onClick={closeDetail}
-            className="mt-14 font-mono text-xs tracking-wider text-[#f1ece2]/50 hover:text-[#f1ece2]"
+            className="mt-11 py-3 font-mono text-xs tracking-wider text-[#f1ece2]/50 hover:text-[#f1ece2]"
           >
             ← TÜM ARAÇLARA DÖN
           </button>

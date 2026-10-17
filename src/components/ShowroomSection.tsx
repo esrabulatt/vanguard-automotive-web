@@ -130,7 +130,7 @@ export const ShowroomSection: React.FC = () => {
 
           <Link
             to="/iletisim"
-            className="mt-6 block font-mono text-[11px] tracking-[0.3em] text-[#f1ece2]/55 hover:text-[#e2cc9b] transition-colors"
+            className="mt-3 block py-3 font-mono text-[11px] tracking-[0.3em] text-[#f1ece2]/55 hover:text-[#e2cc9b] transition-colors"
           >
             ADRES, ULAŞIM &amp; VALE BİLGİSİ →
           </Link>

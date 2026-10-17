@@ -116,7 +116,11 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
             : 'bg-[#f4f2ee]/92 backdrop-blur-md text-[#162231] shadow-[0_1px_0_rgba(0,0,0,0.08)]'
         }`}
       >
-        <nav className="mx-auto max-w-[1720px] h-[72px] px-5 sm:px-10 grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+        <nav
+          className={`mx-auto max-w-[1720px] h-[72px] px-5 sm:px-10 grid items-center gap-3 sm:gap-6 ${
+            searchOpen ? 'grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr]' : 'grid-cols-[1fr_auto_1fr]'
+          }`}
+        >
           {/* Sol: logo */}
           <Link
             to="/"
@@ -126,15 +130,15 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             aria-label="Vanguard Automotive ana sayfa"
-            className="justify-self-start"
+            className={`justify-self-start ${searchOpen ? 'hidden sm:block' : ''}`}
           >
             <Logo />
           </Link>
 
           {/* Orta: linkler ya da arama */}
-          <div className="justify-self-center">
+          <div className={searchOpen ? 'min-w-0 w-full lg:w-auto justify-self-stretch lg:justify-self-center' : 'justify-self-center'}>
             {searchOpen ? (
-              <form id="nav-search" onSubmit={submitSearch} className="w-[min(60vw,22rem)]">
+              <form id="nav-search" onSubmit={submitSearch} className="w-full lg:w-[22rem]">
                 <input
                   ref={searchRef}
                   value={query}
@@ -165,7 +169,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
               type="button"
               onClick={() => setSearchOpen((open) => !open)}
               aria-label={searchOpen ? 'Aramayı kapat' : 'Ara'}
-              className="w-10 h-10 flex items-center justify-center opacity-80 hover:opacity-100"
+              className="shrink-0 w-11 h-11 flex items-center justify-center opacity-80 hover:opacity-100"
             >
               {searchOpen ? <X className="w-[18px] h-[18px]" strokeWidth={1.25} /> : <Search className="w-[18px] h-[18px]" strokeWidth={1.25} />}
             </button>
@@ -173,7 +177,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
             <button
               type="button"
               onClick={() => openReserve()}
-              className={`hidden sm:block px-5 py-2.5 font-mono text-[11px] tracking-[0.3em] transition-colors ${
+              className={`${searchOpen ? 'hidden lg:block' : 'hidden sm:block'} px-5 py-2.5 font-mono text-[11px] tracking-[0.3em] transition-colors ${
                 light ? 'border border-white/60 hover:bg-white hover:text-[#1c1e22]' : 'bg-[#1c1e22] text-[#f1ece2] hover:bg-[#c9a96e] hover:text-[#1c1e22]'
               }`}
             >
@@ -266,7 +270,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] text-white/70 hover:text-white"
+                className="flex items-center gap-3 py-3 font-mono text-[11px] tracking-[0.3em] text-white/70 hover:text-white"
               >
                 KAPAT <X className="w-5 h-5" strokeWidth={1.25} />
               </button>
@@ -332,7 +336,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
             </div>
 
             <div className="mx-auto max-w-[1720px] px-5 sm:px-10 pb-8 flex flex-wrap justify-between gap-4 border-t border-white/10 pt-6 font-mono text-[11px] tracking-[0.25em] text-white/45">
-              <a href={PHONE.href} className="text-white hover:text-[#e2cc9b]">
+              <a href={PHONE.href} className="py-3 text-white hover:text-[#e2cc9b]">
                 HEMEN ARAYIN · {PHONE.display}
               </a>
               <button
@@ -341,7 +345,7 @@ export const Navbar: React.FC<{ cars: Car[] }> = ({ cars }) => {
                   setMenuOpen(false);
                   openReserve();
                 }}
-                className="flex items-center gap-2.5 text-[#e2cc9b] hover:text-white"
+                className="flex items-center gap-2.5 py-3 text-[#e2cc9b] hover:text-white"
               >
                 <span aria-hidden="true" className="w-1.5 h-1.5 bg-[#c9a96e]" /> SHOWROOM RANDEVUSU AL
               </button>

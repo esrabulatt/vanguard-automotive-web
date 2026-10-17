@@ -34,20 +34,20 @@ export const CarCard: React.FC<{ car: Car }> = ({ car }) => {
         )}
       </button>
 
-      <div className="mt-5 flex items-start justify-between gap-6">
+      <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:items-start min-[420px]:justify-between min-[420px]:gap-6">
         <div className="min-w-0">
-          <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-gray-900 truncate">{carTitle(car)}</h3>
+          <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-gray-900 line-clamp-2">{carTitle(car)}</h3>
           <p className="mt-1.5 font-mono text-[11px] tracking-wider text-gray-500">
             {CATEGORY_LABELS[car.category].toLocaleUpperCase('tr-TR')} · {car.year} · {car.specs.rangeOrHorsepower.toUpperCase()} ·{' '}
             {car.specs.seats} KİŞİ
           </p>
         </div>
-        <div className="shrink-0 text-right">
+        <div className="shrink-0 flex items-center justify-between min-[420px]:block min-[420px]:text-right">
           <p className="text-lg sm:text-xl font-medium text-gray-900">{formatPrice(car.price)}</p>
           <button
             type="button"
             onClick={open}
-            className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.2em] text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors"
+            className="mt-1 inline-flex items-center gap-1.5 py-2 font-mono text-[11px] tracking-[0.2em] text-gray-900 border-b border-transparent hover:border-gray-900 transition-colors"
           >
             İNCELE <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </button>

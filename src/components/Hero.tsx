@@ -81,7 +81,7 @@ export const Hero: React.FC<{ cars: Car[] }> = ({ cars }) => {
               <p key={car.id}>
                 {carTitle(car)} · {car.year} · {formatPrice(car.price)} ·{' '}
                 {car.isAvailable ? (
-                  <button type="button" onClick={() => openReserve(car.id)} className="underline underline-offset-4 hover:text-white">
+                  <button type="button" onClick={() => openReserve(car.id)} className="inline-block py-1.5 underline underline-offset-4 hover:text-white">
                     Özel Sunum Talep Et
                   </button>
                 ) : (
@@ -93,7 +93,7 @@ export const Hero: React.FC<{ cars: Car[] }> = ({ cars }) => {
           <button
             type="button"
             onClick={() => openFleet('All')}
-            className="hidden sm:block font-mono text-xs tracking-widest text-white/70 hover:text-white text-right"
+            className="hidden sm:block py-3 -my-3 font-mono text-xs tracking-widest text-white/70 hover:text-white text-right"
           >
             TÜM ARAÇLAR →
           </button>

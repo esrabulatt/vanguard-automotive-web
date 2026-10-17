@@ -69,7 +69,7 @@ export const MinimalFooter: React.FC = () => {
             <button
               type="button"
               onClick={() => openFleet('All')}
-              className="group flex items-center gap-4 border border-white/30 hover:border-white hover:bg-white hover:text-gray-900 px-8 py-5 font-mono text-xs sm:text-sm tracking-[0.25em] transition-colors"
+              className="group flex items-center gap-4 whitespace-nowrap border border-white/30 hover:border-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-5 font-mono text-[11px] sm:text-sm tracking-[0.15em] sm:tracking-[0.25em] transition-colors"
             >
               TÜM FİLOYU GÖRÜNTÜLE
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -103,7 +103,7 @@ export const MinimalFooter: React.FC = () => {
         <div className="mt-20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10 pt-6">
           <Logo size="lg" className="text-white" />
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.3em] text-white/40">
-            <Link to="/iletisim" className="text-white/70 hover:text-[#e2cc9b]">
+            <Link to="/iletisim" className="inline-block py-3 text-white/70 hover:text-[#e2cc9b]">
               İLETİŞİM &amp; SHOWROOM →
             </Link>
             <span>© 2026 VANGUARD AUTOMOTIVE · LÜKS BUTİK GALERİ</span>

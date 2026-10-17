@@ -131,11 +131,11 @@ export const ContactPage: React.FC = () => {
               <Clock className="w-3.5 h-3.5" strokeWidth={1.5} /> ÇALIŞMA SAATLERİ
             </p>
             <dl className="mt-4 space-y-3">
-              <div className="flex items-baseline justify-between gap-4 border-b border-[#f1ece2]/10 pb-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-[#f1ece2]/10 pb-3">
                 <dt className="text-sm text-[#f1ece2]/65">Pazartesi – Cumartesi</dt>
-                <dd className="font-serif text-lg [font-variant-numeric:lining-nums]">10:00 – 19:00</dd>
+                <dd className="whitespace-nowrap font-serif text-lg [font-variant-numeric:lining-nums]">10:00 – 19:00</dd>
               </div>
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <dt className="text-sm text-[#f1ece2]/65">Pazar</dt>
                 <dd className="font-serif text-lg italic text-[#e2cc9b]">Yalnızca randevu ile</dd>
               </div>
@@ -192,7 +192,7 @@ export const ContactPage: React.FC = () => {
           <button
             type="button"
             onClick={() => openReserve(null, 'showroom')}
-            className="group mt-10 inline-flex items-center gap-3 sm:gap-4 whitespace-nowrap bg-[#c9a96e] hover:bg-[#e2cc9b] px-6 sm:px-12 py-5 font-mono text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.25em] text-[#1c1e22] transition-colors"
+            className="group mt-10 inline-flex items-center gap-3 sm:gap-4 whitespace-nowrap bg-[#c9a96e] hover:bg-[#e2cc9b] max-w-full px-5 sm:px-12 py-5 font-mono text-[10px] sm:text-xs tracking-[0.1em] min-[380px]:tracking-[0.15em] sm:tracking-[0.25em] text-[#1c1e22] transition-colors"
           >
             SHOWROOM ZİYARETİ RANDEVUSU AL
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

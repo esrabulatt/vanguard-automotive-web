@@ -85,7 +85,7 @@ export const ScrollVideo: React.FC<{ cars: Car[] }> = ({ cars }) => {
                 <>
                   {carTitle(car)} · {car.year} · {formatPrice(car.price)} ·{' '}
                   {car.isAvailable ? (
-                    <button type="button" onClick={() => openReserve(car.id)} className="underline underline-offset-4 hover:text-white">
+                    <button type="button" onClick={() => openReserve(car.id)} className="inline-block py-1.5 underline underline-offset-4 hover:text-white">
                       Özel Sunum Talep Et
                     </button>
                   ) : (

@@ -399,7 +399,7 @@ const AppointmentPanel: React.FC<PanelProps> = ({ car, cars, initialType, onClos
             </p>
             <p className="mt-3 text-center font-mono text-[10px] tracking-[0.25em] text-[#f1ece2]/45">
               BEKLEMEK İSTEMİYOR MUSUNUZ?{' '}
-              <a href={PHONE.href} className="whitespace-nowrap text-[#e2cc9b] hover:text-[#f1ece2]">
+              <a href={PHONE.href} className="inline-block py-2 whitespace-nowrap text-[#e2cc9b] hover:text-[#f1ece2]">
                 HEMEN ARAYIN · {PHONE.display}
               </a>
             </p>
