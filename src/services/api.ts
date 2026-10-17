@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { ApiResponse, AppointmentPayload, AppointmentResponse, Car, Category } from '../types/car';
 
-// Backend: ~/rent-a-car-api (varsayılan port 3001)
+// Backend: ../api (varsayılan port 3001)
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:3001/api',
   // 4xx cevaplarında da gövdeyi okuyup backend'in mesajını göstermek için

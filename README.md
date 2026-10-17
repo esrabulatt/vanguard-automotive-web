@@ -43,7 +43,7 @@ Kaydırmaya bağlı video, sinematik detay sayfaları ve "VIP Özel Sunum" rande
 | Animasyon | Framer Motion, scroll'a bağlı özel hook'lar |
 | Durum & yönlendirme | Zustand, React Router (URL ile senkron katmanlar) |
 | İkonlar | lucide-react |
-| Backend | Vanguard Automotive API (ayrı depo: `rent-a-car-api`) — Express, SQLite (`node:sqlite`) |
+| Backend | Vanguard Automotive API (`../api`) — Express, SQLite (`node:sqlite`) |
 
 ## Kurulum
 
@@ -51,7 +51,7 @@ Gereksinim: **Node.js 22.13+**
 
 ```bash
 # 1) API (ayrı klasör)
-cd ../rent-a-car-api
+cd ../api
 npm install
 npm run dev          # http://localhost:3001
 

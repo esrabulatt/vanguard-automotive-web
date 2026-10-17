@@ -114,7 +114,7 @@ export const FleetPage: React.FC<Props> = ({ cars, loading, error }) => {
               <p className="text-center text-gray-500">Araçlar yükleniyor...</p>
             ) : error ? (
               <p className="text-center text-red-500">
-                {error} — API çalışıyor mu? (<code>cd ~/rent-a-car-api && npm run dev</code>)
+                {error} — API çalışıyor mu? (<code>cd api && npm run dev</code>)
               </p>
             ) : (
               <div key={selectedCategory} className="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 md:grid-cols-2 animate-card-in">
