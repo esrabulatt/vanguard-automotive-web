@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Car as CarIcon, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { EMAIL, PHONE, SHOWROOM, whatsappLink } from '../constants/contact';
+import { ArrowRight, ArrowUpRight, Car as CarIcon, Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { EMAIL, PHONE, SHOWROOM } from '../constants/contact';
 import { useCarStore } from '../store/useCarStore';
 
 const ease = [0.2, 0.8, 0.2, 1] as const;
@@ -161,14 +161,6 @@ export const ContactPage: React.FC = () => {
                 className="flex items-center justify-center gap-2.5 bg-[#c9a96e] hover:bg-[#e2cc9b] py-3.5 font-mono text-[11px] tracking-[0.2em] text-[#1c1e22] transition-colors"
               >
                 <Phone className="w-4 h-4" strokeWidth={1.5} /> HEMEN ARAYIN
-              </a>
-              <a
-                href={whatsappLink('Merhaba, Vanguard Automotive showroom ziyareti hakkında bilgi almak istiyorum.')}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2.5 border border-[#f1ece2]/25 hover:border-[#c9a96e] hover:text-[#e2cc9b] py-3.5 font-mono text-[11px] tracking-[0.2em] transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} /> WHATSAPP
               </a>
               <a
                 href={`mailto:${EMAIL}`}

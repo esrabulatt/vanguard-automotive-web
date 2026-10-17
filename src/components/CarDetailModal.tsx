@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, FileDown, MessageCircle } from 'lucide-react';
-import { PHONE, whatsappLink } from '../constants/contact';
+import { ArrowLeft, FileDown } from 'lucide-react';
+import { EMAIL, PHONE } from '../constants/contact';
 import { accelerationTr, fuelTr, gearTr, powerTr } from '../utils/specs';
 import { CATEGORY_LABELS } from '../constants/categories';
 import { useCarStore } from '../store/useCarStore';
@@ -245,9 +245,7 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
                   </a>
                 ) : (
                   <a
-                    href={whatsappLink(`Merhaba, ${carTitle(car)} için ekspertiz raporunu talep ediyorum.`)}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={`mailto:${EMAIL}?subject=${encodeURIComponent(`${carTitle(car)} ekspertiz raporu talebi`)}`}
                     className="inline-flex items-center gap-2 py-2 text-sm text-[#f1ece2]/70 underline underline-offset-4 decoration-[#c9a96e]/50 hover:text-[#f1ece2]"
                   >
                     <FileDown className="w-4 h-4" strokeWidth={1.5} /> Ekspertiz Raporu (PDF) talep et
@@ -256,25 +254,14 @@ export const CarDetailModal: React.FC<{ cars: Car[] }> = ({ cars }) => {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <button
-                type="button"
-                onClick={reserve}
-                disabled={!car.isAvailable}
-                className="bg-[#c9a96e] hover:bg-[#e2cc9b] disabled:bg-[#f1ece2]/15 disabled:text-[#f1ece2]/40 disabled:cursor-not-allowed whitespace-nowrap text-[#1c1e22] px-8 py-4 font-mono text-xs tracking-[0.2em] transition-colors"
-              >
-                {car.isAvailable ? 'ÖZEL SUNUM TALEP ET' : 'BU ARAÇ SATIŞ SÜRECİNDE'}
-              </button>
-              <a
-                href={whatsappLink(`Merhaba, ${carTitle(car)} (${formatPrice(car.price)}) hakkında bilgi almak istiyorum.`)}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap border border-[#f1ece2]/35 hover:border-[#c9a96e] hover:text-[#e2cc9b] px-5 sm:px-8 py-4 font-mono text-[11px] sm:text-xs tracking-[0.12em] sm:tracking-[0.2em] transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                DANIŞMANLA WHATSAPP'TAN GÖRÜŞ
-              </a>
-            </div>
+            <button
+              type="button"
+              onClick={reserve}
+              disabled={!car.isAvailable}
+              className="w-full sm:w-auto sm:justify-self-start bg-[#c9a96e] hover:bg-[#e2cc9b] disabled:bg-[#f1ece2]/15 disabled:text-[#f1ece2]/40 disabled:cursor-not-allowed whitespace-nowrap text-[#1c1e22] px-8 py-4 font-mono text-xs tracking-[0.2em] transition-colors"
+            >
+              {car.isAvailable ? 'ÖZEL SUNUM TALEP ET' : 'BU ARAÇ SATIŞ SÜRECİNDE'}
+            </button>
             <p className="text-sm text-[#f1ece2]/55">
               Hemen bilgi almak için{' '}
               <a href={PHONE.href} className="inline-block py-1.5 whitespace-nowrap text-[#f1ece2] underline underline-offset-4 decoration-[#c9a96e]/60 hover:text-[#e2cc9b]">

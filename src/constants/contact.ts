@@ -6,10 +6,6 @@ export const PHONE = {
   href: 'tel:+902125550000',
 };
 export const EMAIL = 'info@vanguardautomotive.com';
-export const WHATSAPP_NUMBER = '908501234567';
-
-export const whatsappLink = (message: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 export const SHOWROOM = {
   area: 'Vadistanbul',

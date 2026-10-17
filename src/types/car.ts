@@ -38,7 +38,7 @@ export interface Car {
     story?: StoryBlock[];
     /** Detay sayfası açılışında görsel yerine oynatılan video */
     video?: CarVideo;
-    /** Ekspertiz raporu (PDF) adresi; yoksa sitede rapor WhatsApp'tan talep edilir */
+    /** Ekspertiz raporu (PDF) adresi; yoksa sitede rapor e-postayla talep edilir */
     reportUrl?: string;
     isFeatured: boolean;
     isAvailable: boolean;
