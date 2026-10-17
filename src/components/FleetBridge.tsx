@@ -11,15 +11,15 @@ export const FleetBridge: React.FC<{ carCount: number }> = ({ carCount }) => {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
 
   // 0 → bölüm alttan girer, 1 → üstten çıkar
-  const background = useTransform(scrollYProgress, [0.1, 0.45], ['#ece8e1', '#16181b']);
-  const glow = useTransform(scrollYProgress, [0.35, 0.55, 0.85], [0, 0.55, 0]);
-  const contentOpacity = useTransform(scrollYProgress, [0.38, 0.52, 0.8, 0.95], [0, 1, 1, 0]);
-  const contentY = useTransform(scrollYProgress, [0.38, 0.55], [40, 0]);
-  const lineScale = useTransform(scrollYProgress, [0.45, 0.65], [0, 1]);
+  const background = useTransform(scrollYProgress, [0, 0.3], ['#ece8e1', '#16181b']);
+  const glow = useTransform(scrollYProgress, [0.2, 0.5, 0.9], [0, 0.55, 0.2]);
+  const contentOpacity = useTransform(scrollYProgress, [0.18, 0.38], [0, 1]);
+  const contentY = useTransform(scrollYProgress, [0.18, 0.4], [40, 0]);
+  const lineScale = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
 
   return (
-    <motion.section ref={ref} style={{ background }} className="relative h-[180vh]">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden px-6">
+    <motion.section ref={ref} style={{ background }} className="relative">
+      <div className="relative flex items-center justify-center overflow-hidden px-6 pt-40 pb-28 sm:pt-56 sm:pb-36">
         {/* Ortadan yayılan çok hafif sıcak ışık */}
         <motion.div
           aria-hidden="true"

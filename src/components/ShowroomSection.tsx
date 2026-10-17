@@ -14,7 +14,7 @@ export const ShowroomSection: React.FC = () => {
   const [front, setFront] = useState<'lounge' | 'keys'>('keys');
 
   return (
-    <section id="showroom" className="bg-[#16181b] text-[#f1ece2] px-4 sm:px-10 py-20 sm:py-32">
+    <section id="showroom" className="bg-[#16181b] text-[#f1ece2] px-4 sm:px-10 pt-10 sm:pt-12 pb-20 sm:pb-32">
       <div className="mx-auto max-w-[1400px] grid gap-14 lg:grid-cols-2 lg:gap-24 lg:items-center">
         {/* Görseller: büyük lounge, üzerine binen küçük kare. Fareyle hangisinin üzerine gelinirse o öne
             geçer; diğeri biraz kenara kayıp küçülür, böylece ikisi de görünür kalır */}
